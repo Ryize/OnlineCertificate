@@ -6,7 +6,7 @@ import time
 
 
 token = os.environ.get('token')
-ip_db = 'ip'
-login_db =  'login_db'
-password_db = 'password_db'
-name_db = 'name_db'
+ip_db = os.environ.get('ip_db')
+login_db =  os.environ.get('login_db')
+password_db = os.environ.get('password_db')
+name_db = os.environ.get('name_db')
