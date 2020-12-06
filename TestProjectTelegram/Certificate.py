@@ -19,11 +19,11 @@ class Certificate:
 
         if self.validity == 'At all':
             validity_time = 999999999999999999
-            cur.execute("INSERT INTO Validity (certificate_key, name_course, name_user, date, validity_time) values(%s, %s, %s, %s, %s)", (self.certificate_number, self.name, self.issued_to, self.date, validity_time))
+            cur.execute("INSERT INTO name_table (certificate_key, name_course, name_user, date, validity_time) values(%s, %s, %s, %s, %s)", (self.certificate_number, self.name, self.issued_to, self.date, validity_time))
             con.commit()
         else:
             validity_time = time.time() + self.validity
-            cur.execute("INSERT INTO Validity (certificate_key, name_course, name_user, date, validity_time) values(%s, %s, %s, %s, %s)", (self.certificate_number, self.name, self.issued_to, self.date, validity_time))
+            cur.execute("INSERT INTO name_table (certificate_key, name_course, name_user, date, validity_time) values(%s, %s, %s, %s, %s)", (self.certificate_number, self.name, self.issued_to, self.date, validity_time))
             con.commit()
 
     def create_certificate(self):
@@ -34,7 +34,7 @@ class Certificate:
 def checkCertificate(certificate_number):
     con = pymysql.connect(ip_db, login_db, password_db, name_db)
     cur = con.cursor()
-    cur.execute("SELECT * FROM Validity")
+    cur.execute("SELECT * FROM name_table")
     for row in cur.fetchall():
         a = list(row)
         certificate_number_bd = a[1]
