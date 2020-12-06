@@ -37,8 +37,12 @@ async def echo(message:types.Message):
         pattern = r'[a-zA-Zа-яА-Я\+]'
         pattern2 = r'[0-9]'
 
-        if checking_characters(pattern, str(issued_to)) and checking_characters(pattern2, str(validity)):
-            validity = int(validity)
+        if checking_characters(pattern, str(issued_to)) and (validity == 'all' or validity == 'All' or checking_characters(pattern2, str(validity))):
+            try:
+                validity = int(validity)
+            except:
+                pass
+                
             a = Certificate(name, issued_to, validity)
             a.saving_to_db()
             answer = a.create_certificate()
