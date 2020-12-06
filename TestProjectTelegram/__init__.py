@@ -5,8 +5,8 @@ import pymysql
 import time
 
 
-token = '****'
-ip_db = '****'
-login_db =  '****'
-password_db = '****'
-name_db = '****'
+token = os.environ.get('token')
+ip_db = 'ip'
+login_db =  'login_db'
+password_db = 'password_db'
+name_db = 'name_db'
