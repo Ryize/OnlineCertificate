@@ -7,29 +7,23 @@ dp = Dispatcher(bot)
 
 @dp.message_handler()
 async def echo(message:types.Message):
-    answer = message.text
-    answer = answer.split(' ')
+    answer = message.text.split(' ')
     command = answer[0]
     entry_func = True
     
     if command == '/getCert' or command == '/getcert':
-        if check_args_amount(answer, 4):
-            pass
-        else:
-            answer = 'Не верный формат записи! Для данной команды необходимо 3 аргумента(Смотри в /help)'
+        if not check_args_amount(answer, 4):
+            nswer = 'Не верный формат записи! Для данной команды необходимо 3 аргумента(Смотри в /help)'
             await message.answer(answer)
             entry_func = False
             
     if command == '/checkCert' or command == '/checkcert':
-        if check_args_amount(answer, 2):
-            pass
-        else:
+        if not check_args_amount(answer, 2):
             answer = 'Не верный формат записи! Для данной команды необходим 1 аргумент(Смотри в /help)'
             await message.answer(answer)
             entry_func = False
         
     if entry_func and (command == '/getCert' or command == '/getcert'):
-            
         name = answer[1]
         issued_to = answer[2]
         validity = answer[3]
@@ -37,7 +31,7 @@ async def echo(message:types.Message):
         pattern = r'[a-zA-Zа-яА-Я\+]'
         pattern2 = r'[0-9]'
 
-        if checking_characters(pattern, str(issued_to)) and (validity == 'all' or validity == 'All' or checking_characters(pattern2, str(validity))):
+        if checking_characters(pattern, str(issued_to)) and (validity.lower() == 'all' or checking_characters(pattern2, str(validity))):
             try:
                 validity = int(validity)
             except:
@@ -70,9 +64,7 @@ async def echo(message:types.Message):
             await message.answer(answer)
 
     else:
-        if not entry_func:
-            pass
-        else:
+        if entry_func:
             answer = 'Команда не найдена!'
             await message.answer(answer)
         
