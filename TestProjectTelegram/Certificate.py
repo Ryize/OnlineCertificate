@@ -1,6 +1,5 @@
 from __init__ import *
 class Certificate:
-
     def __init__(self, name, issued_to, validity):
         self.name = name
         self.issued_to = issued_to
@@ -17,7 +16,7 @@ class Certificate:
         con = pymysql.connect(ip_db, login_db, password_db, name_db)
         cur = con.cursor()
 
-        if self.validity == 'At all':
+        if self.validity.lower() == 'at all':
             validity_time = 999999999999999999
             cur.execute("INSERT INTO name_table (certificate_key, name_course, name_user, date, validity_time) values(%s, %s, %s, %s, %s)", (self.certificate_number, self.name, self.issued_to, self.date, validity_time))
             con.commit()
