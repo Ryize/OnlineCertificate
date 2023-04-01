@@ -1,10 +1,10 @@
 # cert
 
-Telegram bot for receiving and checking online certificates. 
+Telegram-бот для получения и проверки онлайн-сертификатов.
 
-## Deploy locally:
+## Прежде всего:
 
-Clone the repository and go to installed folder:
+Клонируйте репозиторий и перейдите в установленную папку:
 
 ```
 git clone https://github.com/Ryize/cert.git
@@ -12,21 +12,21 @@ cd cert
 ```
 <br>
 
-Install requirements:
+Установите requirements:
 ```
 pip3 install -r requirements.txt
 ```
 <br>
 
-Add your telegram bot token(cert.bot):
+Добавьте токен telegram-бота (cert.bot):
 ```
 bot = Bot(token=token)
 ```
 <br>
 
-Start bot:
+Запустите проект:
 ```
 cd TestProjectTelegram/
 python3 bot.py
 ```
-> Technologies used in the project: Python3, PyTelegramBotApi, pymysql.
+> Технологии, использованные в проекте: Python3, PyTelegramBotApi, pymysql.
