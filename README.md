@@ -1,4 +1,4 @@
-# cert
+# OnlineCertificate
 
 Telegram-бот для получения и проверки онлайн-сертификатов.
 
